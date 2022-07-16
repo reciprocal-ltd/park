@@ -31,7 +31,9 @@
   ^-  (quip card _this)
   %-  (slog 'Welcome to Jurassic Park!' ~)
   :_  this
-  [(~(connect pass /eyre) [~ /] %ducket)]~
+  :+  [%pass /park %arvo [%e %disconnect [~ /]]]
+    (~(connect pass /eyre) [~ /] %ducket)
+  ~
 ::
 ++  on-save
   !>(state)
@@ -43,6 +45,7 @@
 ::
 ++  on-poke
   |=  [=mark =vase]
+  ~&  >  'on-poke'
   ?>  (team:title our.bowl src.bowl)
   ^-  (quip card _this)
   ?+    mark  (on-poke:def mark vase)
@@ -52,7 +55,9 @@
     =/  what=[@tas ?(%grid %park)]
       ?:(=(%park which) [%docket %grid] [%ducket %park])
     :_  this(which +.what)
-    [(~(connect pass /eyre) [~ /] -.what)]~
+    :+  [%pass /park %arvo [%e %disconnect [~ /]]]
+      (~(connect pass /eyre) [~ /] -.what)
+    ~
   ::
       %handle-http-request
     =+  !<([id=@ta inbound-request:eyre] vase)
@@ -69,6 +74,7 @@
 ::
 ++  on-arvo
   |=  [=wire sign=sign-arvo]
+  ~&  >  'on-arvo'
   =^  cards  state
     ?+  wire  (on-arvo:def wire sign)
     ::
@@ -81,6 +87,7 @@
   [cards this]
 ++  on-watch
   |=  =path
+  ~&  >  'on-watch'
   ^-  (quip card _this)
   ?.  ?=([%http-response *] path)  !!
   `this
