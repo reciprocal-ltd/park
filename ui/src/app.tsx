@@ -61,10 +61,10 @@ const AppRoutes = () => {
   }, [search]);
 
   const theme = useTheme();
-  const isDarkMode = false;
+  const isDarkMode = useMedia('(prefers-color-scheme: dark)');
 
   useEffect(() => {
-    if ((isDarkMode && theme === 'auto') || theme === 'dark') {
+    if ((isDarkMode && (theme === 'auto' || theme === 'custom')) || theme === 'dark') {
       document.body.classList.add('dark');
       useLocalState.setState({ currentTheme: 'dark' });
     } else {

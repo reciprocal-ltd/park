@@ -27,7 +27,7 @@ interface BaseSettingsState {
     backgroundType: 'none' | 'url' | 'color';
     background?: string;
     dark: boolean;
-    theme: 'light' | 'dark' | 'auto';
+    theme: 'light' | 'dark' | 'auto' | 'custom';
   };
   tiles: {
     order: string[];
