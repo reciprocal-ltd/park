@@ -67,8 +67,18 @@
       =-  [[307 ['location' -]~] ~]
       (cat 3 '/~/login?redirect=' url.request)
     =*  headers  header-list.request
+    =+  req-line=(parse-request-line url.request)
     ?.  ?=(%'GET' method.request)  [405^~ ~]
-    (redirect:gen '/apps/park/')
+    ?+    [site ext]:req-line  (redirect:gen '/apps/park')
+        [[%session ~] [~ %js]]
+      %.  (rap 3 'window.ship = "' (rsh 3 (scot %p our.bowl)) '";' ~)
+      |=  js=cord
+      ^-  simple-payload:http
+      %.  (as-octs:mimes:html js)
+      %*  .  js-response:gen
+        cache  %.n
+      ==
+    ==
   ==
 ::
 ++  on-arvo
