@@ -30,22 +30,22 @@
 ++  on-init
   ^-  (quip card _this)
   %-  (slog 'Welcome to Jurassic Park!' ~)
-  :_  this
-  :+  [%pass /park %arvo [%e %disconnect [~ /]]]
-    (~(connect pass /eyre) [~ /] %ducket)
-  ~
+  :_  this(which %park)
+  [(~(connect pass /eyre) [~ /] %ducket)]~
 ::
 ++  on-save
+  %-  (slog 'on-save' ~)
   !>(state)
 ::
 ++  on-load
   |=  old=vase
+  %-  (slog 'on-load' ~)
   ^-  (quip card _this)
   `this(state !<(state-0 old))
 ::
 ++  on-poke
   |=  [=mark =vase]
-  ~&  >  'on-poke'
+  %-  (slog 'on-poke' ~)
   ?>  (team:title our.bowl src.bowl)
   ^-  (quip card _this)
   ?+    mark  (on-poke:def mark vase)
@@ -55,11 +55,10 @@
     =/  what=[@tas ?(%grid %park)]
       ?:(=(%park which) [%docket %grid] [%ducket %park])
     :_  this(which +.what)
-    :+  [%pass /park %arvo [%e %disconnect [~ /]]]
-      (~(connect pass /eyre) [~ /] -.what)
-    ~
+    [(~(connect pass /eyre) [~ /] -.what)]~
   ::
       %handle-http-request
+    ~&  >  'ducket-in-charge'
     =+  !<([id=@ta inbound-request:eyre] vase)
     =;  [payload=simple-payload:http]
       :_  this
@@ -74,20 +73,17 @@
 ::
 ++  on-arvo
   |=  [=wire sign=sign-arvo]
-  ~&  >  'on-arvo'
-  =^  cards  state
-    ?+  wire  (on-arvo:def wire sign)
-    ::
-        [%eyre ~]
-      ?>  ?=([%eyre %bound *] sign)
-      ?:  accepted.sign   `state
-      ~&  [dap.bowl %failed-to-bind path.binding.sign]
-      `state
-    ==
-  [cards this]
+  %-  (slog 'on-arvo' ~)
+  ?+    wire  (on-arvo:def wire sign)
+      [%eyre ~]
+    ?>  ?=([%eyre %bound *] sign)
+    ?:  accepted.sign   `this
+    ~&  [dap.bowl %failed-to-bind path.binding.sign]
+    `this
+  ==
 ++  on-watch
   |=  =path
-  ~&  >  'on-watch'
+  %-  (slog 'on-watch' ~)
   ^-  (quip card _this)
   ?.  ?=([%http-response *] path)  !!
   `this

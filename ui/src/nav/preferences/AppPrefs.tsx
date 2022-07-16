@@ -128,7 +128,7 @@ export const AppPrefs = ({ match }: RouteComponentProps<{ desk: string }>) => {
           </Setting>
         ) : (null
         )}
-        {/* {desk === 'garden' && <ParkPrefs/>} */}
+        { desk === 'garden' }
       </div>
     </>
   );
