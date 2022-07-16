@@ -43,6 +43,7 @@
 ::
 ++  on-poke
   |=  [=mark =vase]
+  ?>  (team:title our.bowl src.bowl)
   ^-  (quip card _this)
   ?+    mark  (on-poke:def mark vase)
       %noun
