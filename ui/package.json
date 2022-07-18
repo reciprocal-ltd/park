@@ -23,7 +23,6 @@
     "@radix-ui/react-polymorphic": "^0.0.13",
     "@radix-ui/react-portal": "^0.0.15",
     "@radix-ui/react-toggle": "^0.0.10",
-    "@tlon/indigo-react": "^1.2.27",
     "@tlon/sigil-js": "^1.4.4",
     "@types/lodash": "^4.14.172",
     "@urbit/api": "^2.1.1",
