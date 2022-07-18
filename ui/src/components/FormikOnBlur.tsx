@@ -1,37 +1,40 @@
-import { FormikConfig, FormikProvider, FormikValues, useFormik } from 'formik';
-import React, { useEffect, useImperativeHandle, useCallback } from 'react';
-import _ from 'lodash';
+// import { FormikConfig, FormikProvider, FormikValues, useFormik } from 'formik';
+// import React, { useEffect, useImperativeHandle, useCallback } from 'react';
+// import _ from 'lodash';
 
-export function FormikOnBlur<
-  Values extends FormikValues = FormikValues,
-  ExtraProps = {}
->(props: FormikConfig<Values> & ExtraProps) {
-  const formikBag = useFormik<Values>({ ...props, validateOnBlur: true });
+// export function FormikOnBlur<
+//   Values extends FormikValues = FormikValues,
+//   ExtraProps = {}
+// >(props: FormikConfig<Values> & ExtraProps) {
+//   const formikBag = useFormik<Values>({ ...props, validateOnBlur: true });
 
-  const trySubmit = useCallback(_.debounce((formikBag) => {
-    if (
-      Object.keys(formikBag.errors || {}).length === 0 &&
-      formikBag.dirty &&
-      !formikBag.isSubmitting
-    ) {
-      formikBag.submitForm();
-    }
-  }, 100), []);
+//   const trySubmit = useCallback(_.debounce((formikBag) => {
+//     if (
+//       Object.keys(formikBag.errors || {}).length === 0 &&
+//       formikBag.dirty &&
+//       !formikBag.isSubmitting
+//     ) {
+//       formikBag.submitForm();
+//     }
+//   }, 100), []);
 
-  useEffect(() => {
-    trySubmit(formikBag);
-  }, [
-    formikBag.values,
-    formikBag.errors
-  ]);
+//   useEffect(() => {
+//     trySubmit(formikBag);
+//   }, [
+//     formikBag.values,
+//     formikBag.errors
+//   ]);
 
-  useEffect(() => {
-    formikBag.resetForm({ values: props.initialValues });
-  }, [props.initialValues]);
+//   useEffect(() => {
+//     formikBag.resetForm({ values: props.initialValues });
+//   }, [props.initialValues]);
 
-  const { children, innerRef } = props;
+//   const { children, innerRef } = props;
 
-  useImperativeHandle(innerRef, () => formikBag);
+//   useImperativeHandle(innerRef, () => formikBag);
 
-  return <FormikProvider value={formikBag}>{children}</FormikProvider>;
-}
+//   return <FormikProvider value={formikBag}>{children}</FormikProvider>;
+// }
+
+
+export {}

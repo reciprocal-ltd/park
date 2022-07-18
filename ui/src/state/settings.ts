@@ -28,6 +28,7 @@ interface BaseSettingsState {
     background?: string;
     dark: boolean;
     theme: 'light' | 'dark' | 'auto' | 'custom';
+    doNotDisturb?: boolean;
   };
   tiles: {
     order: string[];

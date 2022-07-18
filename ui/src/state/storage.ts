@@ -63,6 +63,7 @@ const useStorageState = createState<StorageState>(
       createSubscription('s3-store', '/all', (e) => {
         const d = _.get(e, 's3-update', false);
         if (d) {
+          // @ts-ignore
           reduceStateN(get(), d, reduce);
         }
       })

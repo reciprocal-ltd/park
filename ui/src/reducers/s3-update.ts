@@ -3,6 +3,7 @@ import { S3Update } from '../types/s3-update';
 import { BaseState } from '../state/base';
 import { StorageState as State } from '../state/storage';
 
+// @ts-ignore
 type StorageState = State & BaseState<State>;
 
 const credentials = (json: S3Update, state: StorageState): StorageState => {

@@ -246,6 +246,7 @@ api.subscribe({
       const settings = parseBrowserSettings(browserSettings.settings);
       const browserNotifications = getBrowserSetting(settings, browserId)?.browserNotifications;
 
+      // @ts-ignore
       if (!browserNotifications || display.doNotDisturb) {
         return;
       }
